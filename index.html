@@ -79,6 +79,17 @@
       color: #00ffd5;
       margin-top: 20px;
     }
+
+    #music-toggle {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #00ffd5;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -86,20 +97,20 @@
   <h1>$4MIN</h1>
   <p>The dive that never ends.</p>
 
-  <!-- WORKING MEME GIF -->
-  <img src="https://media.tenor.com/zkK02NzmAXgAAAAd/flying-float.gif" alt="Floating Ashton Meme" class="meme" />
+  <!-- Meme GIF (Working) -->
+  <img src="https://media.tenor.com/x5sUtvHQVVoAAAAC/float.gif" alt="Floating Ashton Meme" class="meme" />
 
-  <!-- BUY BUTTON -->
+  <!-- Buy Button -->
   <a class="btn" href="https://pump.fun/29QvRFByyr1YNnx3CcYL1B1oWnh86EXF76CtATT5pump" target="_blank">BUY $4MIN</a>
 
-  <!-- ABOUT -->
+  <!-- About -->
   <div class="section">
     <h2>What is $4MIN?</h2>
     <p>Ashton Hall dove into a pool... and never came down. 4 minutes of airtime. Zero gravity. Max drip.</p>
     <p>This coin honors that legendary moment in internet history. It's not a project. It's a prophecy.</p>
   </div>
 
-  <!-- TOKENOMICS -->
+  <!-- Tokenomics -->
   <div class="section">
     <h2>Float-nomics</h2>
     <p>Total Supply: 4,000,000,000</p>
@@ -107,21 +118,27 @@
     <p>0% Gravity. 100% Float.</p>
   </div>
 
-  <!-- 4-MINUTE DIVE TIMER -->
+  <!-- Timer -->
   <div class="section">
     <h2>4-Minute Dive Timer</h2>
     <div id="timer">Loading...</div>
     <p>Resets forever. Just like Ashton in the sky.</p>
   </div>
 
-  <!-- SOCIAL LINKS -->
+  <!-- Social Links -->
   <div class="socials">
     <p>Join the Float Fam:</p>
     <a href="#">Telegram</a>
     <a href="#">Twitter</a>
   </div>
 
-  <p style="margin-top: 60px;">#4MIN #StillInTheAir #PumpIt</p>
+  <!-- Music Toggle -->
+  <button id="music-toggle">Play Music</button>
+  <audio id="bg-music" loop>
+    <source src="https://files.catbox.moe/7kmbno.mp3" type="audio/mp3">
+  </audio>
+
+  <p style="margin-top: 60px;">#4MIN #StillInTheAir #AshtonNeverLanded</p>
 
   <!-- TIMER SCRIPT -->
   <script>
@@ -134,7 +151,6 @@
         let seconds = duration % 60;
         display.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         duration--;
-
         if (duration < 0) {
           duration = 4 * 60;
         }
@@ -145,6 +161,22 @@
     }
 
     window.onload = startCountdown;
+
+    const music = document.getElementById("bg-music");
+    const toggle = document.getElementById("music-toggle");
+    let playing = false;
+
+    toggle.addEventListener("click", () => {
+      if (!playing) {
+        music.play();
+        toggle.textContent = "Mute Music";
+        playing = true;
+      } else {
+        music.pause();
+        toggle.textContent = "Play Music";
+        playing = false;
+      }
+    });
   </script>
 
 </body>
