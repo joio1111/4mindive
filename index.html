@@ -7,139 +7,150 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: #000;
-      color: white;
+      color: #fff;
       text-align: center;
+      padding: 20px;
+      background-image: url('https://source.unsplash.com/featured/?funny,crypto,meme');
+      background-size: cover;
+      background-position: center;
     }
-    header {
-      padding: 2rem 1rem;
-      background: #00fff2;
-      color: black;
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
     }
+
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.5em;
+      margin-bottom: 10px;
     }
-    button, .generate-btn {
-      background-color: #00fff2;
+
+    button, input[type="text"] {
+      padding: 12px 20px;
+      margin-top: 10px;
       border: none;
-      padding: 1rem 2rem;
-      margin: 1rem 0;
-      font-size: 1rem;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #00fff2;
+      color: black;
       font-weight: bold;
       cursor: pointer;
-      border-radius: 5px;
     }
-    input {
-      padding: 0.7rem;
+
+    input[type="text"] {
       width: 80%;
-      max-width: 300px;
-      margin: 0.5rem 0;
     }
-    .section {
-      padding: 2rem 1rem;
+
+    #memeResult {
+      margin-top: 20px;
     }
-    .meme-image {
-      margin-top: 1rem;
+
+    #memeImage {
+      margin-top: 10px;
+      max-width: 100%;
+      border-radius: 8px;
     }
-    .roadmap, .phases {
+
+    .roadmap {
       text-align: left;
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem 1rem;
+      margin-top: 40px;
     }
-    .phases h3 {
-      margin-top: 2rem;
+
+    .roadmap h2 {
+      font-size: 1.8em;
+      color: #00fff2;
     }
-    a.buy-btn {
-      display: inline-block;
-      text-decoration: none;
-      color: black;
-      background-color: #00fff2;
-      padding: 1rem 2rem;
-      margin-top: 1rem;
-      font-weight: bold;
-      border-radius: 5px;
+
+    .roadmap ul {
+      list-style: square;
+      padding-left: 20px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>$4MIN — Still Floating</h1>
-    <a href="https://pump.fun/29QvRFByyr1YNnx3CcYL1B1oWnh86EXF76CtATT5" target="_blank" class="buy-btn">Buy $4MIN</a>
-  </header>
+  <div class="container">
+    <h1>$4MIN Meme Coin</h1>
+    <a href="https://pump.fun/29QvRFByyr1YNnx3CcYL1B1oWnh86EXF76CtATT5" target="_blank">
+      <button>Buy $4MIN</button>
+    </a>
 
-  <section class="section">
-    <h2>Create Your Own Meme Coin Image</h2>
-    <input type="text" id="memeText" placeholder="Type your meme coin idea..." />
-    <button class="generate-btn" onclick="generateMeme()">Generate</button>
-    <div id="memeResult" class="meme-image"></div>
-  </section>
+    <h2 style="margin-top: 40px;">Create Your Own Meme Coin Image</h2>
+    <input type="text" id="memeInput" placeholder="Type your meme idea here..." />
+    <button onclick="generateMeme()">Generate</button>
 
-  <section id="roadmap" class="roadmap">
-    <h2 style="text-align:center;">Roadmap</h2>
-    <h3>PHASE 1 — Launch ✅</h3>
-    <ul>
-      <li>Ashton Jumps</li>
-      <li>Website Launched</li>
-      <li>Timer Loops Forever</li>
-      <li>Dive Log Opens</li>
-      <li>Telegram & Twitter Ready</li>
-      <li>Listed on Pump.fun</li>
-    </ul>
-  </section>
+    <div id="memeResult">
+      <canvas id="memeCanvas" width="600" height="400" style="display: none;"></canvas>
+      <img id="memeImage" src="" alt="Generated Meme" />
+      <br/>
+      <a id="downloadLink" style="display: none;" download="meme.png">Download Meme</a>
+    </div>
 
-  <section id="phases" class="phases">
-    <h2 style="text-align:center;">$4MIN Flight Plan — Powered by You</h2>
+    <div class="roadmap">
+      <h2>Roadmap</h2>
+      <h3>PHASE 1 — Launch ✅</h3>
+      <ul>
+        <li>Ashton Jumps</li>
+        <li>Website Launched</li>
+        <li>Timer Loops Forever</li>
+        <li>Dive Log Opens</li>
+        <li>Telegram & Twitter Ready</li>
+        <li>Listed on Pump.fun</li>
+      </ul>
+    </div>
 
-    <h3 style="color: #00fff2;">PHASE 1 — Launch ✅</h3>
-    <ul>
-      <li>Ashton Jumps</li>
-      <li>Website Launch</li>
-      <li>Timer Loops Forever</li>
-      <li>Dive Log Opens</li>
-      <li>Telegram & Twitter Ready</li>
-      <li>Listed on Pump.fun</li>
-    </ul>
-
-    <h3 style="color: #ffe600;">PHASE 2 — Meme Season</h3>
-    <ul>
-      <li>Meme Generator Goes Public</li>
-      <li>Leaderboard Introduced</li>
-      <li>Daily Meme Battles</li>
-      <li>Community Voting</li>
-      <li>More Dive Log Lore</li>
-      <li>Twitter Raids Begin</li>
-    </ul>
-
-    <h3 style="color: #ff3b3b;">PHASE 3 — Moon Mode</h3>
-    <ul>
-      <li>Mini Floating Game Live</li>
-      <li>Meme Coin Tools Activated</li>
-      <li>Top 10 Dive Logs Minted as NFTs</li>
-      <li>Community Takeover</li>
-      <li>$4MIN Listed on DEX</li>
-      <li>The Float Never Ends</li>
-    </ul>
-  </section>
+    <div class="footer">
+      Telegram: <a href="https://t.me/MEME4MIN" style="color: #00fff2;">@MEME4MIN</a><br>
+      Twitter: <a href="https://twitter.com/4MINcoin" style="color: #00fff2;">@4MINcoin</a>
+    </div>
+  </div>
 
   <script>
     function generateMeme() {
-      const input = document.getElementById('memeText').value;
-      const result = document.getElementById('memeResult');
-      if (input.trim() === '') {
-        result.innerHTML = '<p>Please enter a meme idea.</p>';
-        return;
-      }
+      const input = document.getElementById('memeInput').value;
+      const canvas = document.getElementById('memeCanvas');
+      const ctx = canvas.getContext('2d');
+      const bgUrl = `https://source.unsplash.com/600x400/?memes,crypto`;
 
-      const memeImg = document.createElement('img');
-      memeImg.src = `https://dummyimage.com/600x400/000/fff&text=${encodeURIComponent(input + ' — $4MIN')}`;
-      memeImg.alt = input;
-      memeImg.style.width = '100%';
-      memeImg.style.maxWidth = '600px';
-      result.innerHTML = '';
-      result.appendChild(memeImg);
+      const image = new Image();
+      image.crossOrigin = 'anonymous';
+      image.src = bgUrl;
+
+      image.onload = function () {
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 28px Arial';
+        ctx.textAlign = 'center';
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'black';
+        ctx.strokeText(input + ' — $4MIN', canvas.width / 2, canvas.height - 40);
+        ctx.fillText(input + ' — $4MIN', canvas.width / 2, canvas.height - 40);
+
+        const memeImg = document.getElementById('memeImage');
+        memeImg.src = canvas.toDataURL();
+        canvas.style.display = 'none';
+        memeImg.style.display = 'block';
+
+        const downloadLink = document.getElementById('downloadLink');
+        downloadLink.href = memeImg.src;
+        downloadLink.style.display = 'inline-block';
+        downloadLink.innerText = 'Download Meme';
+      };
     }
   </script>
 
