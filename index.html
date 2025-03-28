@@ -124,43 +124,110 @@
   </div>
 
   <script>
-    const memeImages = [
-      'https://picsum.photos/seed/meme1/600/400',
-      'https://picsum.photos/seed/meme2/600/400',
-      'https://picsum.photos/seed/meme3/600/400'
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>4MIN Meme Coin Generator</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #00ffe5;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 18px;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    input {
+      width: 80%;
+      max-width: 300px;
+    }
+
+    button {
+      background-color: #00ffe5;
+      color: #000;
+      cursor: pointer;
+    }
+
+    canvas {
+      margin-top: 20px;
+      border-radius: 10px;
+      max-width: 100%;
+    }
+
+    a#download {
+      display: block;
+      margin-top: 15px;
+      color: #00ffe5;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Generate Your Meme Coin Image</h1>
+
+  <input type="text" id="memeText" placeholder="Type something funny...">
+  <br>
+  <button onclick="generateMeme()">Generate Meme</button>
+
+  <canvas id="memeCanvas" width="500" height="500"></canvas>
+  <a id="download" href="#" download="meme.png">Download Meme</a>
+
+  <script>
+    const canvas = document.getElementById('memeCanvas');
+    const ctx = canvas.getContext('2d');
+    const downloadLink = document.getElementById('download');
+
+    // You can replace these with more meme images
+    const backgrounds = [
+      'https://i.imgur.com/4AiXzf8.jpeg',
+      'https://i.imgur.com/OH7dt9M.jpeg',
+      'https://i.imgur.com/Q6aZzZa.jpeg'
     ];
 
     function generateMeme() {
-      const text = document.getElementById('memeInput').value;
-      const canvas = document.getElementById('memeCanvas');
-      const ctx = canvas.getContext('2d');
+      const text = document.getElementById('memeText').value;
+      const bg = new Image();
+      const bgUrl = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = memeImages[Math.floor(Math.random() * memeImages.length)];
+      bg.crossOrigin = 'anonymous';
+      bg.src = bgUrl;
 
-      img.onload = function () {
+      bg.onload = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
         ctx.font = 'bold 28px Arial';
-        ctx.fillStyle = 'white';
-        ctx.strokeStyle = 'black';
+        ctx.fillStyle = '#fff';
+        ctx.strokeStyle = '#000';
         ctx.lineWidth = 3;
         ctx.textAlign = 'center';
 
-        const x = canvas.width / 2;
-        const y = canvas.height - 40;
+        // Draw text in the middle of the image
+        ctx.strokeText(text, canvas.width / 2, canvas.height - 40);
+        ctx.fillText(text, canvas.width / 2, canvas.height - 40);
 
-        ctx.strokeText(text + ' — $4MIN', x, y);
-        ctx.fillText(text + ' — $4MIN', x, y);
-
-        const link = document.getElementById('downloadLink');
-        link.href = canvas.toDataURL();
-        link.style.display = 'inline-block';
+        // Enable download link
+        downloadLink.href = canvas.toDataURL('image/png');
+        downloadLink.style.display = 'inline-block';
       };
-    }
-  </script>
+  
+    </script>
 
 </body>
 </html>
