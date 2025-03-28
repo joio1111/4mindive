@@ -125,9 +125,9 @@
 
   <script>
     const memeImages = [
-      'https://i.imgur.com/4AiXzf8.jpeg',
-      'https://i.imgur.com/zyxAV0F.jpeg',
-      'https://i.imgur.com/1bX5QH6.jpeg'
+      'https://picsum.photos/seed/meme1/600/400',
+      'https://picsum.photos/seed/meme2/600/400',
+      'https://picsum.photos/seed/meme3/600/400'
     ];
 
     function generateMeme() {
@@ -140,6 +140,7 @@
       img.src = memeImages[Math.floor(Math.random() * memeImages.length)];
 
       img.onload = function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         ctx.font = 'bold 28px Arial';
