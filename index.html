@@ -107,11 +107,60 @@
 </section>
 
 <section class="meme-gen">
-  <h2>Create Your Own Meme Quote</h2>
-  <input type="text" id="memeText" placeholder="Type your meme...">
-  <br>
-  <button class="button" onclick="generateMeme()">Generate</button>
-  <p class="output" id="output"></p>
+  <section id="meme-generator" style="text-align: center; margin: 3rem 0;">
+  <h2 style="color: white;">Create Your Own Meme Coin Quote</h2>
+  <input type="text" id="memeText" placeholder="Type your meme idea..." style="padding: 10px; font-size: 16px; border-radius: 5px; width: 300px;">
+  <br><br>
+  <button onclick="generateMeme()" style="padding: 10px 20px; font-size: 16px; background-color: #00ffd4; border: none; border-radius: 5px;">Generate</button>
+  <br><br>
+  <canvas id="memeCanvas" width="600" height="300" style="background: black; border-radius: 10px;"></canvas>
+  <br><br>
+  <a id="downloadLink" download="meme.png" style="display: none;">
+    <button style="padding: 10px 20px; font-size: 16px; background-color: #ffffff; color: black; border: none; border-radius: 5px;">Download Meme</button>
+  </a>
+</section>
+
+<script>
+  function generateMeme() {
+    const text = document.getElementById('memeText').value;
+    const canvas = document.getElementById('memeCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Text
+    ctx.font = 'bold 28px Arial';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+
+    const words = text.split(' ');
+    let line = '';
+    let y = 150;
+
+    for (let i = 0; i < words.length; i++) {
+      const testLine = line + words[i] + ' ';
+      const metrics = ctx.measureText(testLine);
+      if (metrics.width > 500 && line !== '') {
+        ctx.fillText(line, canvas.width / 2, y);
+        line = words[i] + ' ';
+        y += 40;
+      } else {
+        line = testLine;
+      }
+    }
+    ctx.fillText(line, canvas.width / 2, y);
+
+    // Enable download link
+    const downloadLink = document.getElementById('downloadLink');
+    downloadLink.href = canvas.toDataURL('image/png');
+    downloadLink.style.display = 'inline-block';
+  }
+</script>
 </section>
 
 <section id="roadmap">
