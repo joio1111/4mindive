@@ -1,171 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$4MIN - Meme Coin Project</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$4MIN Meme Coin</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #0d0d0d;
-      color: white;
       margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #00ffd4;
-      color: #000;
-      padding: 1.5rem;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: white;
       text-align: center;
     }
-
+    header {
+      padding: 2rem 1rem;
+      background: #00fff2;
+      color: black;
+    }
     h1 {
-      margin: 0;
       font-size: 2.5rem;
     }
-
-    nav {
-      margin-top: 0.5rem;
-    }
-
-    nav a {
-      color: #000;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .button {
-      background-color: #00ffd4;
-      color: black;
-      padding: 12px 24px;
+    button, .generate-btn {
+      background-color: #00fff2;
       border: none;
-      border-radius: 6px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      margin: 10px;
-      text-decoration: none;
-    }
-
-    .meme-gen input {
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      border-radius: 6px;
-      border: none;
+      padding: 1rem 2rem;
+      margin: 1rem 0;
       font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
     }
-
-    .meme-gen button {
+    input {
+      padding: 0.7rem;
+      width: 80%;
+      max-width: 300px;
+      margin: 0.5rem 0;
+    }
+    .section {
+      padding: 2rem 1rem;
+    }
+    .meme-image {
       margin-top: 1rem;
     }
-
-    .output {
-      font-style: italic;
-      font-size: 1.2rem;
-      margin-top: 1.5rem;
+    .roadmap, .phases {
+      text-align: left;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem 1rem;
     }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #1a1a1a;
-      font-size: 0.9rem;
+    .phases h3 {
+      margin-top: 2rem;
     }
-
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    li {
-      margin: 0.3rem 0;
+    a.buy-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: black;
+      background-color: #00fff2;
+      padding: 1rem 2rem;
+      margin-top: 1rem;
+      font-weight: bold;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>$4MIN</h1>
-  <nav>
-    <a href="https://x.com/MEME4MIN" target="_blank">Twitter</a>
-    <a href="https://t.me/MEME4MIN" target="_blank">Telegram</a>
-    <a href="#roadmap">Roadmap</a>
-  </nav>
-</header>
+  <header>
+    <h1>$4MIN — Still Floating</h1>
+    <a href="https://pump.fun/29QvRFByyr1YNnx3CcYL1B1oWnh86EXF76CtATT5" target="_blank" class="buy-btn">Buy $4MIN</a>
+  </header>
 
-<section>
-  <h2>The Meme Coin That’s Still Floating</h2>
-  <p>Inspired by Ashton’s viral 4-minute jump. Join the float.</p>
-  <a href="https://pump.fun/29QvRFByyr1YNnx3CcYL1B1oWnh86EXF76CtATT5" class="button" target="_blank">Buy $4MIN</a>
-</section>
+  <section class="section">
+    <h2>Create Your Own Meme Coin Image</h2>
+    <input type="text" id="memeText" placeholder="Type your meme coin idea..." />
+    <button class="generate-btn" onclick="generateMeme()">Generate</button>
+    <div id="memeResult" class="meme-image"></div>
+  </section>
 
-<section class="meme-gen">
-  <section id="meme-generator" style="text-align: center; margin: 3rem 0;">
-  <h2 style="color: white;">Create Your Own Meme Coin Quote</h2>
-  <input type="text" id="memeText" placeholder="Type your meme idea..." style="padding: 10px; font-size: 16px; border-radius: 5px; width: 300px;">
-  <br><br>
-  <button onclick="generateMeme()" style="padding: 10px 20px; font-size: 16px; background-color: #00ffd4; border: none; border-radius: 5px;">Generate</button>
-  <br><br>
-  <canvas id="memeCanvas" width="600" height="300" style="background: black; border-radius: 10px;"></canvas>
-  <br><br>
-  <a id="downloadLink" download="meme.png" style="display: none;">
-    <button style="padding: 10px 20px; font-size: 16px; background-color: #ffffff; color: black; border: none; border-radius: 5px;">Download Meme</button>
-  </a>
-</section>
-
-<script>
-  function generateMeme() {
-    const text = document.getElementById('memeText').value;
-    const canvas = document.getElementById('memeCanvas');
-    const ctx = canvas.getContext('2d');
-
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Background
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Text
-    ctx.font = 'bold 28px Arial';
-    ctx.fillStyle = 'white';
-    ctx.textAlign = 'center';
-
-    const words = text.split(' ');
-    let line = '';
-    let y = 150;
-
-    for (let i = 0; i < words.length; i++) {
-      const testLine = line + words[i] + ' ';
-      const metrics = ctx.measureText(testLine);
-      if (metrics.width > 500 && line !== '') {
-        ctx.fillText(line, canvas.width / 2, y);
-        line = words[i] + ' ';
-        y += 40;
-      } else {
-        line = testLine;
-      }
-    }
-    ctx.fillText(line, canvas.width / 2, y);
-
-    // Enable download link
-    const downloadLink = document.getElementById('downloadLink');
-    downloadLink.href = canvas.toDataURL('image/png');
-    downloadLink.style.display = 'inline-block';
-  }
-</script>
-</section>
-
-<section id="roadmap">
-  <h2>Roadmap</h2>
-  <div style="max-width: 600px; margin: auto;">
+  <section id="roadmap" class="roadmap">
+    <h2 style="text-align:center;">Roadmap</h2>
     <h3>PHASE 1 — Launch ✅</h3>
     <ul>
       <li>Ashton Jumps</li>
@@ -175,36 +88,60 @@
       <li>Telegram & Twitter Ready</li>
       <li>Listed on Pump.fun</li>
     </ul>
+  </section>
 
-    <h3>PHASE 2 — Community</h3>
+  <section id="phases" class="phases">
+    <h2 style="text-align:center;">$4MIN Flight Plan — Powered by You</h2>
+
+    <h3 style="color: #00fff2;">PHASE 1 — Launch ✅</h3>
     <ul>
-      <li>Meme Generator Live</li>
-      <li>Community Dive Logs</li>
-      <li>Viral Content Push</li>
-      <li>Raiding & Shill Games</li>
+      <li>Ashton Jumps</li>
+      <li>Website Launch</li>
+      <li>Timer Loops Forever</li>
+      <li>Dive Log Opens</li>
+      <li>Telegram & Twitter Ready</li>
+      <li>Listed on Pump.fun</li>
     </ul>
 
-    <h3>PHASE 3 — Expansion</h3>
+    <h3 style="color: #ffe600;">PHASE 2 — Meme Season</h3>
     <ul>
-      <li>Mini Game Launch</li>
-      <li>Leaderboard Integration</li>
-      <li>Custom Memes from Fans</li>
-      <li>Potential CEX Listing</li>
+      <li>Meme Generator Goes Public</li>
+      <li>Leaderboard Introduced</li>
+      <li>Daily Meme Battles</li>
+      <li>Community Voting</li>
+      <li>More Dive Log Lore</li>
+      <li>Twitter Raids Begin</li>
     </ul>
-  </div>
-</section>
 
-<footer>
-  &copy; 2025 $4MIN Project — Powered by Memes, Built by Community
-</footer>
+    <h3 style="color: #ff3b3b;">PHASE 3 — Moon Mode</h3>
+    <ul>
+      <li>Mini Floating Game Live</li>
+      <li>Meme Coin Tools Activated</li>
+      <li>Top 10 Dive Logs Minted as NFTs</li>
+      <li>Community Takeover</li>
+      <li>$4MIN Listed on DEX</li>
+      <li>The Float Never Ends</li>
+    </ul>
+  </section>
 
-<script>
-  function generateMeme() {
-    const input = document.getElementById('memeText').value.trim();
-    const output = document.getElementById('output');
-    output.textContent = input ? `“${input}” — $4MIN` : '';
-  }
-</script>
+  <script>
+    function generateMeme() {
+      const input = document.getElementById('memeText').value;
+      const result = document.getElementById('memeResult');
+      if (input.trim() === '') {
+        result.innerHTML = '<p>Please enter a meme idea.</p>';
+        return;
+      }
+
+      const memeImg = document.createElement('img');
+      memeImg.src = `https://dummyimage.com/600x400/000/fff&text=${encodeURIComponent(input + ' — $4MIN')}`;
+      memeImg.alt = input;
+      memeImg.style.width = '100%';
+      memeImg.style.maxWidth = '600px';
+      result.innerHTML = '';
+      result.appendChild(memeImg);
+    }
+  </script>
 
 </body>
 </html>
