@@ -1,251 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>$4MIN Meme Coin</title>
   <style>
     body {
-      background-color: #0d0d0d;
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
     }
-
-    .logo {
-      font-size: 3rem;
-      color: #00ffd0;
-      margin-top: 2rem;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
-    }
-
-    .meme-img {
-      max-width: 90%;
-      height: auto;
-      margin-top: 1rem;
-      border-radius: 8px;
-    }
-
-    .button {
-      background-color: #00ffd0;
+    header {
+      background: #00ffd4;
       color: #000;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      margin-top: 1rem;
-      cursor: pointer;
-    }
-
-    .timer {
+      padding: 1.5rem 2rem;
+      text-align: center;
       font-size: 2rem;
-      margin-top: 1rem;
-    }
-
-    .music-toggle {
-      margin-top: 0.5rem;
-      cursor: pointer;
-      color: #00ffd0;
-    }
-
-    .dive-log {
-      margin-top: 3rem;
-      padding: 1rem;
-      background-color: #1a1a1a;
-      border-radius: 10px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .entry {
-      font-style: italic;
-      margin: 0.5rem 0;
-    }
-
-    .roadmap {
-      margin-top: 4rem;
-      padding: 2rem;
-      background-color: #141414;
-      border-radius: 10px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .phase {
-      margin-top: 2rem;
-    }
-
-    .social {
-      margin-top: 2rem;
-    }
-
-    .social a {
-      margin: 0 15px;
-      color: #00ffd0;
-      text-decoration: none;
       font-weight: bold;
     }
-
+    nav {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .meme-img {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 1rem auto;
+    }
+    .countdown {
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .roadmap {
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .roadmap h3 {
+      color: #00aa88;
+    }
+    .meme-gen {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .meme-gen input {
+      width: 80%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .meme-gen button {
+      padding: 0.75rem 2rem;
+      background: #00ffd4;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
     footer {
-      margin-top: 4rem;
+      text-align: center;
+      padding: 1rem;
+      background: #f1f1f1;
       font-size: 0.9rem;
-      color: #666;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="logo">$4MIN</div>
-
-  <img src="https://media.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif" alt="Floating Meme" class="meme-img">
-
-  <div class="timer" id="timer">04:00</div>
-  <div class="music-toggle" onclick="toggleMusic()">Play Music</div>
-  <button class="button" onclick="window.open('https://pump.fun/8ewgL9BeZLCqFzcdXjcWyP15AfmwE4y7GsZkSKEhqqBf', '_blank')">Buy $4MIN</button>
-
-  <div class="dive-log">
-    <h3>Dive Log</h3>
-    <div class="entry">Day 12 – Still floating.</div>
-    <div class="entry">Day 16 – Clouds forming around him.</div>
-    <div class="entry">Day 19 – I think I saw a bird next to him.</div>
-    <div class="entry">Day 21 – A drone just passed him.</div>
-    <div class="entry">Day 25 – He started meditating mid-air.</div>
-  </div>
-
-  <div class="roadmap">
-    <h2>Roadmap</h2>
-
-    <div class="phase">
-      <h3>PHASE 1 — Launch ✅</h3>
-      <ul>
-        <li>Ashton jumps</li>
-        <li>Website launched</li>
-        <li>Timer loops forever</li>
-        <li>Dive Log opens</li>
-        <li>Telegram & Twitter ready</li>
-        <li>Listed on Pump.fun</li>
-      </ul>
-    </div>
-
-    <div class="phase">
-      <h3>PHASE 2 — Engagement (In Progress)</h3>
-      <ul>
-        <li>Viral memes & GIFs</li>
-        <li>Game or floating simulator</li>
-        <li>Meme generator</li>
-        <li>Leaderboard for Dive Logs</li>
-        <li>Community challenges</li>
-      </ul>
-    </div>
-
-    <div class="phase">
-      <h3>PHASE 3 — Expansion (Coming Soon)</h3>
-      <ul>
-        <li>Custom NFT collection</li>
-        <li>Mobile-friendly updates</li>
-        <li>Strategic collabs</li>
-        <li>Massive Twitter raids</li>
-        <li>More hangtime records</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="social">
+  <header>$4MIN Meme Coin</header>
+  <nav>
     <a href="https://t.me/MEME4MIN" target="_blank">Telegram</a>
-    <a href="https://twitter.com/4minMemeCoin" target="_blank">Twitter</a>
-  </div>
+    <a href="https://twitter.com/your4minpage" target="_blank">Twitter</a>
+    <a href="https://pump.fun/" target="_blank">Buy $4MIN</a>
+  </nav>
+
+  <section class="section">
+    <h2 style="text-align:center;">The Coin That’s Still Floating...</h2>
+    <img src="https://media.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif" alt="Ashton Float Meme" class="meme-img" />
+    <div class="countdown" id="timer">04:00</div>
+  </section>
+
+  <section class="section roadmap">
+    <h2 style="text-align:center;">Roadmap</h2>
+    <h3>PHASE 1 — Launch ✅</h3>
+    <ul>
+      <li>Ashton jumps</li>
+      <li>Website launched</li>
+      <li>Timer loops forever</li>
+      <li>Dive Log opens</li>
+      <li>Telegram & Twitter ready</li>
+      <li>Listed on Pump.fun</li>
+    </ul>
+    <h3>PHASE 2 — Community Tools</h3>
+    <ul>
+      <li>Meme generator active</li>
+      <li>Viral tweet campaign</li>
+      <li>Dive Log grows daily</li>
+      <li>Game prototype starts</li>
+    </ul>
+  </section>
+
+  <section class="section meme-gen">
+    <h2>Generate a Meme</h2>
+    <input type="text" id="memeText" placeholder="Type something funny..." />
+    <button onclick="generateMeme()">Generate</button>
+    <p id="output" style="margin-top:1rem;"></p>
+  </section>
 
   <footer>
-    &copy; 2024 $4MIN. Made by believers in gravity defiance.
+    © 2025 $4MIN | Float Hard or Float Home
   </footer>
 
-  <audio id="bg-music" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
   <script>
-    let musicPlaying = false;
-    const audio = document.getElementById("bg-music");
-
-    function toggleMusic() {
-      if (musicPlaying) {
-        audio.pause();
-        document.querySelector(".music-toggle").innerText = "Play Music";
-      } else {
-        audio.play();
-        document.querySelector(".music-toggle").innerText = "Mute Music";
-      }
-      musicPlaying = !musicPlaying;
-    }
-
     let countdown = 240;
     const timerElement = document.getElementById("timer");
-
     setInterval(() => {
       countdown--;
       if (countdown <= 0) countdown = 240;
       let minutes = Math.floor(countdown / 60);
       let seconds = countdown % 60;
-      timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      timerElement.textContent = \`\${String(minutes).padStart(2, '0')}:\${String(seconds).padStart(2, '0')}\`;
     }, 1000);
-  </script>
-<!-- Meme Generator Section -->
-<section id="meme-generator" style="padding: 2rem; background: #111; color: white; text-align: center;">
-  <h2>Create Your Meme</h2>
-  <input type="file" id="imageUpload" accept="image/*" style="margin: 1rem 0;"/>
-  <br>
-  <input type="text" id="topText" placeholder="Top Text" style="padding: 0.5rem; width: 40%;"/>
-  <input type="text" id="bottomText" placeholder="Bottom Text" style="padding: 0.5rem; width: 40%;"/>
-  <br><br>
-  <button onclick="generateMeme()" style="padding: 10px 20px; background-color: #00ffd4; color: black; border: none;">Generate</button>
-  <br><br>
-  <canvas id="memeCanvas" style="max-width: 100%;"></canvas>
-</section>
 
-<script>
-  function generateMeme() {
-    const canvas = document.getElementById("memeCanvas");
-    const ctx = canvas.getContext("2d");
-    const topText = document.getElementById("topText").value.toUpperCase();
-    const bottomText = document.getElementById("bottomText").value.toUpperCase();
-    const imageInput = document.getElementById("imageUpload");
-
-    if (!imageInput.files[0]) {
-      alert("Please upload an image.");
-      return;
+    function generateMeme() {
+      const text = document.getElementById('memeText').value;
+      if (text.trim()) {
+        document.getElementById('output').innerText = "“" + text + "” — $4MIN";
+      } else {
+        document.getElementById('output').innerText = "";
+      }
     }
+  </script>
 
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      const img = new Image();
-      img.onload = function() {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-        ctx.font = "40px Impact";
-        ctx.fillStyle = "white";
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = 3;
-        ctx.textAlign = "center";
-        ctx.fillText(topText, canvas.width / 2, 50);
-        ctx.strokeText(topText, canvas.width / 2, 50);
-        ctx.fillText(bottomText, canvas.width / 2, canvas.height - 20);
-        ctx.strokeText(bottomText, canvas.width / 2, canvas.height - 20);
-      };
-      img.src = event.target.result;
-    };
-    reader.readAsDataURL(imageInput.files[0]);
-  }
-</script>
 </body>
 </html>
